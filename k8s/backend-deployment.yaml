@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: grupo4espe/clinica-backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://host.minikube.internal:3306/proyectoclinica?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+        - name: SPRING_DATASOURCE_USERNAME
+          value: root
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: root
+        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+          value: update
+        - name: SPRING_JPA_SHOW_SQL
+          value: "true"
+        resources:
+          requests:
+            memory: "256Mi"  # Memoria mínima que el contenedor solicita
+            cpu: "250m"      # CPU mínima que el contenedor solicita (250 milicores)
+          limits:
+            memory: "512Mi"  # Límite máximo de memoria que el contenedor puede usar
+            cpu: "500m"      # Límite máximo de CPU que el contenedor puede usar (500 milicores)
