@@ -39,7 +39,7 @@ jobs:
         with:
           context: ./ProyectoClinica
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/clinica-backend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/clinica-backend:latest
 
   deploy:
     needs: [build-backend]
