@@ -19,7 +19,6 @@ jobs:
 
       - name: Install dependencies and build backend
         run: |
-          cd ProyectoClinica
           python -m venv venv
           source venv/bin/activate
           pip install -r requirements.txt
