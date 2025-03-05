@@ -1,7 +1,7 @@
 FROM mysql:8.0
 
 ENV MYSQL_ROOT_PASSWORD=root
-ENV MYSQL_DATABASE=proyectoclinica
+ENV MYSQL_DATABASE=citas-medicas
 ENV MYSQL_ROOT_HOST=%
 
 # Copiar script de inicialización
